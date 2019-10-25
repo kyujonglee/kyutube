@@ -1,4 +1,5 @@
 import getBlobDuration from "get-blob-duration";
+import axios from "axios";
 
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
@@ -90,15 +91,14 @@ function getCurrentTime() {
 }
 
 async function setTotalTime() {
-  // let duration;
-  // if (isFinite(videoPlayer.duration)) {
-  //   duration = videoPlayer.duration;
-  // } else {
-  //   const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  //   duration = await getBlobDuration(blob);
-  // }
-  const blob = await fetch(videoPlayer.src).then(response => response.blob());
-  const duration = await getBlobDuration(blob);
+  let duration;
+  // eslint-disable-next-line no-restricted-globals
+  if (isFinite(videoPlayer.duration)) {
+    duration = videoPlayer.duration;
+  } else {
+    const blob = await fetch(videoPlayer.src).then(response => response.blob());
+    duration = await getBlobDuration(blob);
+  }
   const totalTimeString = formatDate(duration);
   totalTime.innerHTML = totalTimeString;
   setInterval(getCurrentTime, 1000);

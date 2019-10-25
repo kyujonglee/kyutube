@@ -28,7 +28,7 @@ passport.use(
     {
       clientID: process.env.FB_ID,
       clientSecret: process.env.FB_SECRET,
-      callbackURL: `https://green-goose-59.localtunnel.me${routes.facebookCallback}`,
+      callbackURL: `https://kyutube1.herokuapp.com${routes.facebookCallback}`,
       profileFields: ["id", "displayName", "photos", "email"],
       scope: ["public_profile", "email"]
     },
