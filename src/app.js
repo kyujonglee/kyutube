@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import mongoose from "mongoose";
@@ -28,6 +29,7 @@ const app = express();
 const CookieStore = MongoStore(session);
 
 app.use(helmet());
+app.use(cors());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(cookieParser());
