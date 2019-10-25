@@ -33,8 +33,12 @@
     }
   }
   .video__comments {
+    width: 100%;
     margin-top: 25px;
     text-align: center;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
     .video__comment-number {
       font-size: 18px;
     }
@@ -46,6 +50,7 @@
       }
     }
     .video__comments-list {
+      width: 25%;
       margin-top: 50px;
       li {
         background-color: #3498db;
@@ -53,6 +58,11 @@
         padding: 15px;
         border-radius: 20px;
         border-bottom-left-radius: 0px;
+        display: flex;
+        justify-content: space-between;
+        .video__comment-delete-btn {
+          cursor: pointer;
+        }
         &:not(:last-child) {
           margin-bottom: 15px;
         }
