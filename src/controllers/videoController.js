@@ -42,6 +42,7 @@ export const postUpload = async (req, res) => {
   });
   req.user.videos.push(newVideo.id);
   req.user.save();
+  req.flash("success", "비디오가 업로드되었습니다.");
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
@@ -78,6 +79,7 @@ export const postEditVideo = async (req, res) => {
   } = req;
   try {
     await Video.findOneAndUpdate({ _id: id }, { title, description });
+    req.flash("info", "비디오가 수정되었습니다.");
     res.redirect(routes.videoDetail(id));
   } catch (error) {
     res.redirect(routes.home);
@@ -94,6 +96,7 @@ export const deleteVideo = async (req, res) => {
       throw Error();
     } else {
       await Video.findOneAndRemove({ _id: id });
+      req.flash("info", "비디오가 삭제되었습니다.");
     }
   } catch (error) {
     console.log(error);

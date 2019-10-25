@@ -6,6 +6,7 @@
     width: 100%;
     max-width: 850px;
     margin-top: 25px;
+    color: $text;
     button {
       width: 100px;
       margin-bottom: 25px;
@@ -33,10 +34,11 @@
     }
   }
   .video__comments {
+    color: $text;
     width: 100%;
     margin-top: 25px;
     text-align: center;
-    display : flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     .video__comment-number {

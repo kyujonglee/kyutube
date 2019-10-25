@@ -21,18 +21,18 @@
   z-index: 9;
   padding: 20px;
   text-align: center;
-  animation: flashAnimation 5s ease-in-out forwards;
+  animation: flashAnimation 3s ease-in-out forwards;
   &.error {
-    background-color: #e74c3c;
+    background-color: #fa5252;
   }
   &.success {
-    background-color: #2ecc71;
+    background-color: #63e6be;
   }
   &.info {
-    background-color: #f1c40f;
+    background-color: #ffa94d;
   }
   .flash-message__text {
     color: white;
-    font-size: 14px;
+    font-size: 1.2rem;
   }
 }

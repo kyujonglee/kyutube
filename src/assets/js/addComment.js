@@ -32,7 +32,7 @@ const addComment = (comment, commentId) => {
   li.appendChild(span);
   const span2 = document.createElement("span");
   span2.innerHTML = "❌";
-  span2.classList.add(".video__comment-delete-btn");
+  span2.classList.add("video__comment-delete-btn");
   span2.setAttribute("value", commentId);
   span2.addEventListener("click", handleDeleteComment);
   li.appendChild(span2);
