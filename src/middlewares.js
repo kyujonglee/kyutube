@@ -26,29 +26,31 @@ export const onlyPrivate = (req, res, next) => {
   }
 };
 
-// const s3 = new aws.S3({
-//   accessKeyId: process.env.AWS_KEY,
-//   secretAccessKey: process.env.AWS_PRIVATE_KEY,
-//   region: "ap-northeast-1"
-// });
+const endpoint = new aws.Endpoint("https://kr.object.ncloudstorage.com");
+const region = "kr-standard";
 
-// const multerVideo = multer({
-//   storage: multerS3({
-//     s3,
-//     acl: "public-read",
-//     bucket: "kyuTube/video"
-//   })
-// });
-// const multerAvatar = multer({
-//   storage: multerS3({
-//     s3,
-//     acl: "public-read",
-//     bucket: "kyuTube/avatar"
-//   })
-// });
+const s3 = new aws.S3({
+  accessKeyId: process.env.NCLOUD_KEY,
+  secretAccessKey: process.env.NCLOUD_PRIVATE_KEY,
+  region,
+  endpoint
+});
 
-const multerVideo = multer({ dest: "uploads/videos/" });
-const multerAvatar = multer({ dest: "uploads/avatars/" });
+const multerAvatar = multer({
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: "kyutube/avatar"
+  })
+});
+
+const multerVideo = multer({
+  storage: multerS3({
+    s3,
+    acl: "public-read",
+    bucket: "kyutube/video"
+  })
+});
 
 export const uploadVideo = multerVideo.single("videoFile");
 export const uploadAvatar = multerAvatar.single("avatar");
